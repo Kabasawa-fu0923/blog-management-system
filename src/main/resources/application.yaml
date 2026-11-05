@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/blog-system
+    url: jdbc:postgresql://localhost:5432/blog-system
     username: postgres
-    password: postgres
+    password: bakayarou1
   thymeleaf:
     cache: false
     prefix: classpath:/templates/

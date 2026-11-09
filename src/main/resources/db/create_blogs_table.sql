@@ -1,5 +1,5 @@
 
-CREATE DATABASE IF NOT EXISTS `blog-system`;
+DROP TABLE IF EXISTS blogs CASCADE;
 
 USE `blog-system`;
 

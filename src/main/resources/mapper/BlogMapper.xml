@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.blog.repository.BlogMapper">
+
+    <!-- 一覧取得（削除されていない記事をID降順で取得） -->
+    <select id="findAll" resultType="com.example.blog.entity.Blog">
+        SELECT
+            id,
+            title,
+            content,
+            created_at AS createdAt,
+            updated_at AS updatedAt,
+            deleted_at AS deletedAt
+        FROM blogs
+        WHERE deleted_at IS NULL
+        ORDER BY id DESC
+    </select>
+
+    <!-- ID指定で取得 -->
+    <select id="findById" parameterType="int"
+            resultType="com.example.blog.entity.Blog">
+        SELECT
+            id,
+            title,
+            content,
+            created_at AS createdAt,
+            updated_at AS updatedAt,
+            deleted_at AS deletedAt
+        FROM blogs
+        WHERE id = #{id}
+          AND deleted_at IS NULL
+    </select>
+
+    <!-- 新規登録 -->
+    <insert id="save" parameterType="com.example.blog.entity.Blog">
+        INSERT INTO blogs (
+            title,
+            content,
+            created_at,
+            updated_at
+        )
+        VALUES (
+            #{title},
+            #{content},
+            CURRENT_TIMESTAMP,
+            CURRENT_TIMESTAMP
+        )
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="com.example.blog.entity.Blog">
+        UPDATE blogs
+        SET
+            title = #{title},
+            content = #{content},
+            updated_at = CURRENT_TIMESTAMP
+        WHERE id = #{id}
+          AND deleted_at IS NULL
+    </update>
+
+    <!-- 論理削除 -->
+    <update id="delete" parameterType="int">
+        UPDATE blogs
+        SET deleted_at = CURRENT_TIMESTAMP
+        WHERE id = #{id}
+          AND deleted_at IS NULL
+    </update>
+
+</mapper>

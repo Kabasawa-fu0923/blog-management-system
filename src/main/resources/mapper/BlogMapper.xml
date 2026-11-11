@@ -19,7 +19,7 @@
         ORDER BY id DESC
     </select>
 
-    <!-- ID指定で取得 -->
+    <!-- ID指定で取得（削除されていない記事のみ） -->
     <select id="findById" parameterType="int"
             resultType="com.example.blog.entity.Blog">
         SELECT

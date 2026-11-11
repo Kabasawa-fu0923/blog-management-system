@@ -10,10 +10,10 @@ import com.example.blog.entity.Blog;
 @Mapper
 public interface BlogMapper {
 
-    // 一覧取得（削除されていない記事をID降順で取得）
+    // 一覧取得
     List<Blog> findAll();
 
-    // ID指定で取得（削除されていない記事のみ）
+    // ID指定で取得
     Blog findById(int id);
 
     // 新規登録

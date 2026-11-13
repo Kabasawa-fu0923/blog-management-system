@@ -36,7 +36,7 @@ public class BlogController {
 
     // ブログ作成画面
     @GetMapping("/new")
-    public String create(Model model) {
+    public String newForm(Model model) {
 
         model.addAttribute("blog", new Blog());
 
@@ -56,7 +56,7 @@ public class BlogController {
     @GetMapping("/{id}")
     public String detail(@PathVariable int id, Model model) {
 
-        Blog blog = blogService.findById(id);
+        Blog blog = blogService.detail(id);
 
         model.addAttribute("blog", blog);
 

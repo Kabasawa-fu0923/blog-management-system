@@ -1,8 +1,6 @@
 
 DROP TABLE IF EXISTS blogs CASCADE;
 
-USE `blog-system`;
-
 CREATE TABLE `Blog` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `title` VARCHAR(255) NOT NULL,

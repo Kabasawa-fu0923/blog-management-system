@@ -25,7 +25,7 @@ public class BlogService {
     }
 
     // ブログIDで取得
-    public Blog findById(int id) {
+    public Blog detail(int id) {
         return blogMapper.findById(id);
     }
 

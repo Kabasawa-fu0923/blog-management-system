@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -9,7 +10,7 @@
 <body>
 <div th:include="header"></div>
 <div class="container mt-5">
-    <form th:object="${blog}" th:action="${blog.id == null} ? @{/blogs} : @{/blogs/{id}(id=${blog.id})}" method="post">
+    <form th:object="${blog}" th:action="${blog.id == 0} ? @{/blogs} : @{/blogs/{id}(id=${blog.id})}" method="post">
 
         <div class="form-group">
             <label for="title">タイトル:</label>
@@ -17,14 +18,17 @@
             <div th:if="${#fields.hasErrors('title')}" class="text-danger" th:errors="*{title}"></div>
             <div th:if="${titleError}" class="text-danger" th:text="${titleError}"></div>
         </div>
+
         <div class="form-group">
             <label for="content">コンテンツ:</label>
             <textarea id="content" th:field="*{content}" class="form-control"></textarea>
             <div th:if="${#fields.hasErrors('content')}" class="text-danger" th:errors="*{content}"></div>
         </div>
+
         <div class="form-group text-left">
             <button type="submit" class="btn btn-primary">保存</button>
         </div>
+
     </form>
 </div>
 <div th:include="footer :: footer"></div>

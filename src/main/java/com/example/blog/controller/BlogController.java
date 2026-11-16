@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.blog.entity.Blog;
 import com.example.blog.service.BlogService;
+import com.example.blog.form.BlogForm;
 
 @Controller
 @RequestMapping("/blogs")
@@ -61,5 +62,29 @@ public class BlogController {
         model.addAttribute("blog", blog);
 
         return "blog/detail";
+    }
+
+        // ブログ更新画面
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable int id, Model model) {
+
+        Blog blog = blogService.detail(id);
+
+        model.addAttribute("blog", blog);
+
+        return "blog/form";
+    }
+
+        // ブログ更新
+    @PostMapping("/{id}")
+    public String update(@PathVariable int id, BlogForm form, Model model) {
+
+        blogService.update(id, form);
+
+        List<Blog> blogs = blogService.list();
+
+        model.addAttribute("blogs", blogs);
+
+        return "blog/list";
     }
 }

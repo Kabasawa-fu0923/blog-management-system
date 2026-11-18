@@ -62,4 +62,26 @@ public class BlogController {
 
         return "blog/detail";
     }
+
+        // ブログ更新画面
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable int id, Model model) {
+
+        Blog blog = blogService.detail(id);
+
+        model.addAttribute("blog", blog);
+
+        return "blog/form";
+    }
+
+    // ブログ更新
+@PostMapping("/{id}")
+public String update(@PathVariable int id, Blog blog) {
+
+    blog.setId(id);
+
+    blogService.update(blog);
+
+    return "redirect:/blogs";
+}
 }

@@ -48,18 +48,9 @@ public class BlogService {
         blogMapper.save(blog);
     }
 
-    // ブログ更新
-public void update(int id, BlogForm form) {
-
-    // Entityを生成
-    Blog blog = new Blog();
-
-    // FormからEntityに値を詰め直す
-    blog.setId(id);
-    blog.setTitle(form.getTitle());
-    blog.setContent(form.getContent());
-
-    // DBを更新
+// ブログ更新
+public void update(Blog blog) {
     blogMapper.update(blog);
 }
+    
 }

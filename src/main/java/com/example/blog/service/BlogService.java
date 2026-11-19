@@ -53,4 +53,8 @@ public void update(Blog blog) {
     blogMapper.update(blog);
 }
     
+    // ブログ削除（論理削除）
+    public void delete(int id) {
+        blogMapper.delete(id);
+    }
 }

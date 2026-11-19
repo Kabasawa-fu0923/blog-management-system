@@ -47,4 +47,10 @@ public class BlogService {
     public void save(Blog blog) {
         blogMapper.save(blog);
     }
+
+// ブログ更新
+public void update(Blog blog) {
+    blogMapper.update(blog);
+}
+    
 }

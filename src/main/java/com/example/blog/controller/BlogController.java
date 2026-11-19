@@ -84,4 +84,13 @@ public String update(@PathVariable int id, Blog blog) {
 
     return "redirect:/blogs";
 }
+
+    // ブログ削除
+    @PostMapping("/{id}/delete")
+    public String delete(@PathVariable int id) {
+
+        blogService.delete(id);
+
+        return "redirect:/blogs";
+    }
 }
